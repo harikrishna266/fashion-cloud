@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 let routes: Routes = [
     {path:':tags/:userid', component: ImageViewComponent},
+    {path:':tags', component: ImageViewComponent},
 ]
 
 @NgModule({

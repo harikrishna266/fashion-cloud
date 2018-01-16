@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-
+import { FlickerService } from './core/flicker.service';
 
 import { ComponentsModule } from './components/components.module';
 
+import { HttpModule } from '@angular/http';
+ 
 //lazy load routes
 let routes: Routes = [
     {path:'', redirectTo: "search", pathMatch: 'full'},
@@ -22,16 +24,19 @@ let routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ComponentsModule,
+    HttpModule,
     MatToolbarModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [FlickerService],
+  bootstrap: [AppComponent],
+
+
 })
 export class AppModule { }

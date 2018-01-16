@@ -1,5 +1,16 @@
 <app-search (search)="makeSearch($event)"></app-search>
-<div *ngFor="let search of results" class="searcgHolder" (click)="ViewDetails(search)">  
+<div *ngIf="error!=''">
+  {{error}}
+</div>
+<div class="button-row">
+  <button mat-button (click)="sort('view')">View</button>
+  <button mat-button (click)="sort('photo_date')">date take</button>
+  <button mat-button (click)="sort('uploaded_date')">date uploaded</button>
+  <button mat-button (click)="sort('ownerName')">owner</button>
+ 
+</div>
+ 
+<div *ngFor="let search of results|sort:sortBy" class="searcgHolder" (click)="ViewDetails(search)">  
 
   <img  [src]="search.imageUrl">
   <div class="data" >

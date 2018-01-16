@@ -4,14 +4,18 @@ import { FlickerSearchComponent } from './flicker-search.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { MatButtonModule } from '@angular/material/button';
+
 import { ComponentsModule } from '../components/components.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SearchService } from './search.service';
+ 
 
 let routes: Routes = [
     {path:'', component: FlickerSearchComponent},
 ]
+import { SortPipe } from '../pipes/sort.pipe';
+
 
 @NgModule({
   imports: [
@@ -19,9 +23,10 @@ let routes: Routes = [
     ComponentsModule,
     HttpModule,
     FlexLayoutModule,
+    MatButtonModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [FlickerSearchComponent],
-  providers: [ SearchService ]
+  declarations: [FlickerSearchComponent,  SortPipe],
+ 
 })
 export class FlickerSearchModule { }

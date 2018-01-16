@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../flicker-search/search.service';
+import { FlickerService } from '../core/flicker.service';
 import { FlickerImageModel } from './flicker-image.model';
 import { URLSearchParams } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
+import { URLSearchParams } from '@angular/http'
 
 @Component({
   selector: 'app-image-view',
@@ -16,19 +17,21 @@ export class ImageViewComponent implements OnInit {
   public searchResults: FlickerImageModel[] = [];
 
 
-  constructor( private route: ActivatedRoute, public searchServ:SearchService) { }
+  constructor( private route: ActivatedRoute, public searchServ:FlickerService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      console.log(params);
       this.getAllImages(params);
     });
   }
   getAllImages(params) {
     this.searchServ.search(params).subscribe(res => {
-         for(let imge  of res){
-           let  newSearch =  new FlickerImageModel(params.tags,imge.url_q,imge.ownername,imge.dateupload,imge.datetaken,imge.view,params.userid);
-           this.searchResults = [...this.searchResults,newSearch];
-         }
+         for(let imge  of res.photos.photo){
+         let  newSearch =  new FlickerImageModel(params.tags,imge.url_q,imge.ownername,imge.dateupload,imge.datetaken,imge.view,params.userid);
+           console.log(newSearch);
+         this.searchResults = [...this.searchResults,newSearch];
+       }
     })
   }
 
