@@ -43,10 +43,9 @@ describe('SearchComponent', () => {
     let username = component.flickerSearchForm.get('tags');
     username.setValue(''); //now the form is invalid, 
     fixture.detectChanges();
-
     let de = fixture.debugElement.query(By.css('.submit'));
-    
     let ele:HTMLBRElement = de.nativeElement;
     expect(ele.hasAttribute('disabled')).toBeTruthy();
   })
+  
 });

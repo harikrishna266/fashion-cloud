@@ -1,25 +1,43 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FlickerSearchComponent } from './flicker-search.component';
+import { Observable } from 'rxjs';
+ 
+import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from "@angular/router/testing";
+import { FlickerService } from '../core/flicker.service';
+import { SortPipe } from '../pipes/sort.pipe';
 
-// import { FlickerSearchComponent } from './flicker-search.component';
+describe('FlickerSearchComponent', () => {
+  let component: FlickerSearchComponent;
+  let fixture: ComponentFixture<FlickerSearchComponent>;
 
-// describe('FlickerSearchComponent', () => {
-//   let component: FlickerSearchComponent;
-//   let fixture: ComponentFixture<FlickerSearchComponent>;
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ FlickerSearchComponent,SortPipe ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports :[HttpModule,RouterTestingModule],
+       providers: [FlickerService]
+    })
+    .compileComponents();
+  }));
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ FlickerSearchComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(FlickerSearchComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(FlickerSearchComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should call search',() => {
+    fixture = TestBed.createComponent(FlickerSearchComponent);
+    let flicker = TestBed.get(FlickerService);
+    component = fixture.componentInstance;
+    let loginSpy = spyOn(flicker,'search').and.callFake(res => { return Observable.empty()});
+    component.makeSearch({tags:'x',userid: 1});
+    expect(loginSpy).toHaveBeenCalled();
+  })
+});
