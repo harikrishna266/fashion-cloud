@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+
+
+import { ComponentsModule } from './components/components.module';
+
 //lazy load routes
 let routes: Routes = [
     {path:'', redirectTo: "search", pathMatch: 'full'},
@@ -23,6 +27,7 @@ let routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ComponentsModule,
     MatToolbarModule,
     RouterModule.forRoot(routes),
   ],

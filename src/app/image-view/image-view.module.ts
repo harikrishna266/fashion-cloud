@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageViewComponent } from './image-view.component';
+import { SearchService } from '../flicker-search/search.service';
 import { RouterModule, Routes } from '@angular/router';
 
 let routes: Routes = [
-    {path:'', component: ImageViewComponent},
+    {path:':tags/:userid', component: ImageViewComponent},
 ]
 
 @NgModule({
@@ -12,6 +13,7 @@ let routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [ImageViewComponent]
+  declarations: [ImageViewComponent],
+  
 })
 export class ImageViewModule { }

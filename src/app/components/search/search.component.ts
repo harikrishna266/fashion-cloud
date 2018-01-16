@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output,  OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  public flickerSearchForm:FormGroup;
+  @Output() search = new EventEmitter();
+
+  constructor(public fb: FormBuilder ) {   
+    this.flickerSearchForm = this.fb.group({
+      tags: ['', Validators.required],
+      userid: ['']
+    })
+  }
 
   ngOnInit() {
+  }
+
+  makeSearch() {
+    this.search.next(this.flickerSearchForm.value);
+    this.flickerSearchForm.reset();
+  }
+
+  cancelSearch() {
+
   }
 
 }

@@ -1,3 +1,17 @@
-<p>
-  flicker-search works!
-</p>
+<app-search (search)="makeSearch($event)"></app-search>
+<div *ngFor="let search of results" class="searcgHolder" (click)="ViewDetails(search)">  
+
+  <img  [src]="search.imageUrl">
+  <div class="data" >
+     <p>tag:{{search.tag}}</p>
+     <p>Uploaded date:{{search.uploaded_date}}</p>
+     <p>takenon:{{search.photo_date}}</p>
+     <p>ownerName:{{search.ownerName}}</p>  
+  </div>
+</div>
+
+
+
+ 
+
+ 
