@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 
 
+
 //lazy load routes
 let routes: Routes = [
     {path:'', redirectTo: "search", pathMatch: 'full'},
@@ -16,7 +17,7 @@ let routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,    
   ],
   imports: [
     BrowserModule,
