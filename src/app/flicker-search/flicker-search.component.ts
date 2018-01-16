@@ -31,7 +31,7 @@ export class FlickerSearchComponent implements OnInit {
         return;
       }
       let imge = res.photos.photo[0];
-
+      console.log("ss");
       let  newSearch =  new SearchResultModel(this.results.length,searchData.tags,imge.url_q,imge.ownername,imge.dateupload,imge.datetaken,imge.view,searchData.userid);
       this.results = [...this.results,newSearch];
     },(e) => {
@@ -43,7 +43,7 @@ export class FlickerSearchComponent implements OnInit {
   }
 
   ViewDetails(search:SearchResultModel) {
-    if(search.userid)
+    if(search.userid !== undefined)
       this.router.navigate(['/view', search.tag,search.userid]) ;
     else this.router.navigate(['/view', search.tag]) ;
   }

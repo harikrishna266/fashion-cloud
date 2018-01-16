@@ -39,6 +39,7 @@ describe('SearchComponent', () => {
        expect(component.flickerSearchForm.contains('tags')).toBeTruthy();
        expect(component.flickerSearchForm.contains('user_id')).toBeTruthy();
   })
+  
   it('Submit button should not be enabled if the tags are empty',() => {
     let username = component.flickerSearchForm.get('tags');
     username.setValue(''); //now the form is invalid, 

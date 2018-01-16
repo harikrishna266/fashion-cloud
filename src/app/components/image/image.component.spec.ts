@@ -34,8 +34,7 @@ describe('ImageComponent', () => {
     let de = fixture.debugElement.query(By.css('.image_list'))
     fixture.detectChanges();
     let ele:HTMLBRElement = de.nativeElement;  
-    expect(ele.getAttribute('src')).toBe('test');
-    
+    expect(ele.getAttribute('src')).toBe('test');    
   }))
    
 });
