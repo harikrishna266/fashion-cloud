@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickerService } from '../core/flicker.service';
 import { FlickerImageModel } from './flicker-image.model';
-import { URLSearchParams } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-import { URLSearchParams } from '@angular/http'
+ 
 
 @Component({
   selector: 'app-image-view',
