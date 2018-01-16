@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlickerService } from '../core/flicker.service';
 import { FlickerImageModel } from './flicker-image.model';
 import { ActivatedRoute } from '@angular/router';
- 
+
 
 @Component({
   selector: 'app-image-view',

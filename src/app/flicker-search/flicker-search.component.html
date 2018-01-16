@@ -10,15 +10,9 @@
  
 </div>
  
-<div *ngFor="let search of results|sort:sortBy" class="searcgHolder" (click)="ViewDetails(search)">  
+<div *ngFor="let search of results|sort:sortBy" class="searcgHolder" >  
 
-  <img  [src]="search.imageUrl">
-  <div class="data" >
-     <p>tag:{{search.tag}}</p>
-     <p>Uploaded date:{{search.uploaded_date}}</p>
-     <p>takenon:{{search.photo_date}}</p>
-     <p>ownerName:{{search.ownerName}}</p>  
-  </div>
+  <app-image [details]="search" (click)="ViewDetails(search)"></app-image>
 </div>
 
 

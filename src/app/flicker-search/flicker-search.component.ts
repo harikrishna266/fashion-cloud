@@ -43,7 +43,9 @@ export class FlickerSearchComponent implements OnInit {
   }
 
   ViewDetails(search:SearchResultModel) {
-      this.router.navigate(['/view', search.tag,search.userid])    
+    if(search.userid)
+      this.router.navigate(['/view', search.tag,search.userid]) ;
+    else this.router.navigate(['/view', search.tag]) ;
   }
 
 }  
