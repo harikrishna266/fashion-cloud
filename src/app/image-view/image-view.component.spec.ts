@@ -32,9 +32,7 @@ describe('ImageViewComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should call search',() => {
-    fixture = TestBed.createComponent(ImageViewComponent);
     let flicker = TestBed.get(FlickerService);
-    component = fixture.componentInstance;
     let loginSpy = spyOn(flicker,'search').and.callFake(res => { return Observable.empty()});
     component.getAllImages({tags:'x',userid: 1});
     expect(loginSpy).toHaveBeenCalled();

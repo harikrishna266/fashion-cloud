@@ -16,6 +16,10 @@ import { FlickerService } from './core/flicker.service';
 import { HttpModule } from '@angular/http';
 
 describe('AppComponent', () => {
+  let router;
+  let location;
+  let fixture;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -29,6 +33,11 @@ describe('AppComponent', () => {
       providers: [FlickerService]
     }).compileComponents();
   }));
+   beforeEach(() => {
+     router = TestBed.get(Router);
+     location = TestBed.get(Location);
+     fixture = TestBed.createComponent(AppComponent);
+  });
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
@@ -46,10 +55,7 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Fashion Cloud');
   }));
   it('should register a url called search', fakeAsync(() => {
-    let router = TestBed.get(Router);
-    let location = TestBed.get(Location);
-    let fixture = TestBed.createComponent(AppComponent);
-    router.initialNavigation();
+   router.initialNavigation();
     const loader = TestBed.get(NgModuleFactoryLoader);
     loader.stubbedModules = {search: FlickerSearchModule};
 
@@ -62,9 +68,7 @@ describe('AppComponent', () => {
     expect(location.path()).toBe('/search');
   }));
   it('should register a url called view', fakeAsync(() => {
-    let router = TestBed.get(Router);
-    let location = TestBed.get(Location);
-    let fixture = TestBed.createComponent(AppComponent);
+    
     router.initialNavigation();
     const loader = TestBed.get(NgModuleFactoryLoader);
     loader.stubbedModules = {search: ImageViewModule};
