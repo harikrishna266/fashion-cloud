@@ -1,7 +1,8 @@
 import { async, ComponentFixture, tick, TestBed , fakeAsync} from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlickerSearchComponent } from './flicker-search.component';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
+import 'rxjs/add/observable/empty';
 
 import { HttpModule } from '@angular/http';
 import { Router } from '@angular/router';
@@ -38,7 +39,7 @@ describe('FlickerSearchComponent', () => {
 
   it('should call search', () => {
     const flicker = TestBed.get(FlickerService);
-    const loginSpy = spyOn(flicker, 'search').and.callFake((res) =>   Observable.empty(); );
+    const loginSpy = spyOn(flicker, 'search').and.callFake(res =>   Observable.empty() );
     component.makeSearch({ tags: 'x', userid: 1});
     expect(loginSpy).toHaveBeenCalled();
   });
