@@ -1,8 +1,5 @@
-.searcgHolder{
-  width: 300px;
-  height: 300px;
-  cursor: pointer;
+.searchHolder{
+  width: 800px;
+  margin: 0 auto;
 }
-.data{ 
-  clear: both;
- }
+ 

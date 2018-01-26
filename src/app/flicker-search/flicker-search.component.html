@@ -1,18 +1,18 @@
-<app-search (search)="makeSearch($event)"></app-search>
-<div *ngIf="error!=''">
-  {{error}}
-</div>
-<div class="button-row">
-  <button mat-button (click)="sort('view')">View</button>
-  <button mat-button (click)="sort('photo_date')">date take</button>
-  <button mat-button (click)="sort('uploaded_date')">date uploaded</button>
-  <button mat-button (click)="sort('ownerName')">owner</button>
- 
-</div>
- 
-<div *ngFor="let search of results|sort:sortBy" class="searcgHolder" >  
-
-  <app-image [details]="search" (click)="ViewDetails(search)"></app-image>
+<div  fxLayout="column" fxFlexFill  >
+	<div fxFlex="50" class="searchHolder">
+		<app-search  (search)="makeSearch($event)"></app-search>
+	</div>
+	<div  fxFlex="50" *ngIf="error!=''">  {{error}} </div>
+	<div  fxFlex="50" class="button-row"  >
+	  <button mat-button (click)="sort('view')">View</button>
+	  <button mat-button (click)="sort('photo_date')">date take</button>
+	  <button mat-button (click)="sort('uploaded_date')">date uploaded</button>
+	  <button mat-button (click)="sort('ownerName')">owner</button>
+	</div>
+	<div  fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
+		<app-image fxFlex="20%" *ngFor="let search of results|sort:sortBy" [details]="search" (click)="ViewDetails(search)"></app-image>		 
+	</div>
+	
 </div>
 
 

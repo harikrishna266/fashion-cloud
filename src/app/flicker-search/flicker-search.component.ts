@@ -20,28 +20,41 @@ export class FlickerSearchComponent implements OnInit {
 
   ngOnInit() { }
 
-  makeSearch(searchData) {
-    this.error = '';
-
-    this.searchSer.search(searchData).subscribe(res => {
-      if (res.photos.total === 0) {
+  showErrorIfEmptyResults(photos) {
+   if (typeof photos === 'undefined') {
         this.error = 'No images found with this search!';
         return;
-      }
-      const imge = res.photos.photo[0];
-      const newSearch =  new SearchResultModel(this.results.length,
-                                             searchData.tags,
-                                             imge.url_q,
-                                             imge.ownername,
-                                             imge.dateupload,
-                                             imge.datetaken,
-                                             imge.view,
-                                             searchData.userid);
-      this.results = [...this.results, newSearch];
-    }, (e) => {
-      this.error = 'something went wrong';
-    });
+    } else {
+      return true;
+    }
   }
+  arrangePhotos(image,searchData) {
+    const newSearch =  new SearchResultModel(this.results.length,
+                                             searchData.tags,
+                                             image.url_q,
+                                             image.ownername,
+                                             image.dateupload,
+                                             image.datetaken,
+                                             image.view,
+                                             searchData.userid);
+    this.results = [...this.results, newSearch];
+  }
+
+  makeSearch(searchData) {
+    this.error = '';
+    this.searchSer.search(searchData)
+    .map(res =>  res.photos.photo[0])
+    .subscribe(
+      (res) => {
+        if (this.showErrorIfEmptyResults(res)) {
+          this.arrangePhotos(res,searchData);
+        } 
+      },
+      (e) => {
+        this.error = 'something went wrong';
+      });
+  }
+
   sort(type) {
     this.sortBy = type;
   }

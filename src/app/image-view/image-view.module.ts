@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImageViewComponent } from './image-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
     {path: ':tags', component: ImageViewComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     ComponentsModule,
+    FlexLayoutModule,
     RouterModule.forChild(routes),
   ],
   declarations: [ImageViewComponent]
