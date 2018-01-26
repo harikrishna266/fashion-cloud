@@ -8,14 +8,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  public flickerSearchForm:FormGroup;
+  public flickerSearchForm: FormGroup;
   @Output() search = new EventEmitter();
 
-  constructor(public fb: FormBuilder ) {   
+  constructor(public fb: FormBuilder )  {
     this.flickerSearchForm = this.fb.group({
       tags: ['', Validators.required],
       user_id: ['']
-    })
+    });
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   }
 
   cancelSearch() {
-
+    this.flickerSearchForm.reset();
   }
 
 }

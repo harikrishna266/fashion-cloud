@@ -10,6 +10,7 @@
       true,
       "check-space"
     ],
+    "space-before-function-paren": ["error", "never"],
     "curly": true,
     "eofline": true,
     "forin": true,

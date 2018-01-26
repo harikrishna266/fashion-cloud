@@ -10,16 +10,19 @@ export class FlickerService {
   constructor(public http: Http ) { }
 
   makeQueryString(searchData) {
-    let params = new URLSearchParams();
-    for(let key in searchData){
-      if(searchData[key]) params.set(key, searchData[key]) 
+    const params = new URLSearchParams();
+    let key: string;
+    for (key in searchData) {
+      if (searchData[key]) {
+          params.set(key, searchData[key]);
+        }
     }
     return params.toString();
   }
   search(params) {
-    let api = this.makeQueryString(params);
+    const api = this.makeQueryString(params);
     return this.http.get(`${environment.FlickerAPI}&${api}`)
-      .map(res =>  res.json())
+      .map(res =>  res.json());
   }
 
 }

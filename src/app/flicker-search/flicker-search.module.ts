@@ -9,13 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { ComponentsModule } from '../components/components.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
- 
 
-let routes: Routes = [
-    {path:'', component: FlickerSearchComponent},
-]
+const routes: Routes = [
+  {path: '', component: FlickerSearchComponent}
+];
+
 import { SortPipe } from '../pipes/sort.pipe';
-
 
 @NgModule({
   imports: [
@@ -26,7 +25,6 @@ import { SortPipe } from '../pipes/sort.pipe';
     MatButtonModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [FlickerSearchComponent,  SortPipe],
- 
+  declarations: [FlickerSearchComponent,  SortPipe]
 })
 export class FlickerSearchModule { }

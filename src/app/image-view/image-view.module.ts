@@ -4,10 +4,10 @@ import { ImageViewComponent } from './image-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
 
-let routes: Routes = [
-    {path:':tags', component: ImageViewComponent},
-    {path:':tags/:userid', component: ImageViewComponent},
-]
+const routes: Routes = [
+    {path: ':tags', component: ImageViewComponent},
+    {path: ':tags/:userid', component: ImageViewComponent}
+];
 
 @NgModule({
   imports: [
@@ -15,7 +15,6 @@ let routes: Routes = [
     ComponentsModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [ImageViewComponent],
-  
+  declarations: [ImageViewComponent]
 })
 export class ImageViewModule { }

@@ -7,12 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ImageComponent implements OnInit {
 
-
   @Input() details;
-  
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -23,18 +23,16 @@ describe('ImageComponent', () => {
   });
 
   it('should create', () => {
-    fixture = TestBed.createComponent(ImageComponent);
-    component = fixture.componentInstance;
-  
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
-  it('should create',async(() => {
-    component.details = {tag:'1',imageUrl:'test',uploaded_date:'12',photo_date:'12',ownerName:'11'};
-    let de = fixture.debugElement.query(By.css('.image_list'))
+
+  it('should create', async(() => {
+    component.details = {tag: '1', imageUrl: 'test', uploaded_date: '12', photo_date: '12', ownerName: '11'};
+    const de = fixture.debugElement.query(By.css('.image_list'));
     fixture.detectChanges();
-    let ele:HTMLBRElement = de.nativeElement;  
-    expect(ele.getAttribute('src')).toBe('test');    
-  }))
-   
+    const ele: HTMLBRElement = de.nativeElement;
+    expect(ele.getAttribute('src')).toBe('test');
+  }));
+
 });

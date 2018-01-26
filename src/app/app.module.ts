@@ -12,13 +12,13 @@ import { FlickerService } from './core/flicker.service';
 import { ComponentsModule } from './components/components.module';
 
 import { HttpModule } from '@angular/http';
- 
-//lazy load routes
-let routes: Routes = [
-    {path:'', redirectTo: "search", pathMatch: 'full'},
+
+// lazy load routes
+const routes: Routes = [
+    {path: '', redirectTo: 'search', pathMatch: 'full'},
     {path: 'search', loadChildren: './flicker-search/flicker-search.module#FlickerSearchModule'},
     {path: 'view', loadChildren: './image-view/image-view.module#ImageViewModule'}
-]
+];
 
 
 
