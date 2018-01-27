@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit {
 
   makeSearch() {
     this.search.next(this.flickerSearchForm.value);
-    this.flickerSearchForm.reset();
+    this.flickerSearchForm.setValue({tags: '', user_id: '', per_page: 1, page: 1});
   }
 
   cancelSearch() {
