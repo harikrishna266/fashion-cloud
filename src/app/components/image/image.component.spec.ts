@@ -28,11 +28,11 @@ describe('ImageComponent', () => {
   });
 
   it('should create', async(() => {
-    component.details = {tag: '1', imageUrl: 'test', uploaded_date: '12', photo_date: '12', ownerName: '11'};
+    component.details = {tag: '1', imageUrl: 'image_url', uploaded_date: '12', photo_date: '12', ownerName: '11'};
     const de = fixture.debugElement.query(By.css('.image_list'));
     fixture.detectChanges();
     const ele: HTMLBRElement = de.nativeElement;
-    expect(ele.getAttribute('src')).toBe('test');
+    expect(ele.getAttribute('src')).toBe('image_url');
   }));
 
 });

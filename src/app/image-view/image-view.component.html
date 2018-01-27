@@ -1,7 +1,15 @@
 <div  fxLayout="column" fxFlexFill  >	
-	<app-paging fxFlexFill [totalRecords]="totalRecords"  (goToPage)="navigateTo($event)" [currentPage]="currentPage"></app-paging>
+	<div  fxLayout="row">
+		<app-paging  [totalRecords]="totalRecords" [recordPerPage]="recordPerPage"  (goToPage)="navigateTo($event)" [currentPage]="currentPage"></app-paging>
+		<select  [(ngModel)]="recordPerPage" (change)="changeRecordsPerRow()" >
+			<option> 10</option>
+			<option> 20</option>
+			<option> 30</option>
+			<option> 50</option>
+		</select>
+	</div>
 	<div  fxFlex="50" *ngIf="error!=''">  {{error}} </div>
 	<div  fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
-		<app-image fxFlex="20%" *ngFor="let image of searchResults" [details]="image" ></app-image>		 
+		<app-image [showDetails]="false" fxFlex="20%" *ngFor="let image of searchResults" [details]="image" ></app-image>		 
 	</div>
 </div>

@@ -8,14 +8,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { PagingComponent } from './paging/paging.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    FormsModule,
     MatCardModule,
     FlexLayoutModule
   ],

@@ -9,10 +9,10 @@ export class PagingComponent implements OnInit, OnChanges {
 
   @Input() totalRecords;
   @Input() currentPage;
+  @Input() recordPerPage;
   @Output() goToPage: EventEmitter<number> = new EventEmitter();
 
   public buttons: any[] = [];
-  public recordPerPage = 10;
 
   constructor() { }
 

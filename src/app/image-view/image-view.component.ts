@@ -16,7 +16,7 @@ export class ImageViewComponent implements OnInit {
   public getParams;
   public currentPage;
   public totalRecords;
-  public recordsPerPage = 10;
+  public recordPerPage = 10;
 
   constructor( private route: ActivatedRoute, public router: Router, public searchServ: FlickerService) { }
 
@@ -24,8 +24,19 @@ export class ImageViewComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.currentPage = (params.page) ? + params.page : 1;
       this.getParams = params;
-      this.getAllImages(params);
+      this.getAllImages({tags: params.tags,
+                         page: params.page,
+                         per_page: this.recordPerPage,
+                         user_id: params.user_id
+                       });
     });
+  }
+  changeRecordsPerRow() {
+      this.getAllImages({tags: this.getParams.tags,
+                         page: this.getParams.page,
+                         per_page: this.recordPerPage,
+                         user_id: this.getParams.user_id
+                       });
   }
   showErrorIfEmptyResults(photos) {
    if (typeof photos.photo === 'undefined') {

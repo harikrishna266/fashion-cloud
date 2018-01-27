@@ -1,11 +1,6 @@
 <div fxLayout="row"  >
 	<div  >
-	  <button mat-button *ngFor="let button of  buttons" (click)="goTo(button)">{{button}}</button>
+	  <button mat-button [color]="(currentPage == button)?'primary':''" *ngFor="let button of  buttons" (click)="goTo(button)">{{button}}</button>
 	</div>
-	<select  [(ngModel)]="recordPerPage" (change)="renderPaginator()">
-		<option> 10</option>
-		<option> 20</option>
-		<option> 30</option>
-		<option> 50</option>
-	</select>
+	
 </div>
