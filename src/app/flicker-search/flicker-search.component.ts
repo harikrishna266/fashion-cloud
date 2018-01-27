@@ -15,6 +15,12 @@ export class FlickerSearchComponent implements OnInit {
   public results: SearchResultModel[] = [];
   public error: string;
   public sortBy;
+  public sortOrder: any = {
+    view: false,
+    photoDate: false,
+    uploadedDate: false,
+    ownerName: false
+  };
 
   constructor(public searchSer: FlickerService, public router: Router) { }
 
@@ -30,14 +36,16 @@ export class FlickerSearchComponent implements OnInit {
   }
   arrangePhotos(image) {
     const datetaken = image.photo.datetaken ? new Date(image.photo.datetaken).getTime() : 0;
+    console.log(image);
     const newSearch =  new SearchResultModel(image.total,
                                              image.searchData.tags,
                                              image.photo.url_q,
                                              image.photo.ownername,
                                              image.photo.dateupload,
                                              datetaken,
-                                             image.photo.view,
+                                             image.photo.views,
                                              image.searchData.user_id);
+    console.log(newSearch);
     this.results = [...this.results, newSearch];
   }
 
@@ -64,6 +72,7 @@ export class FlickerSearchComponent implements OnInit {
 
   sort(type) {
     this.sortBy = type;
+    this.sortOrder[type] = !this.sortOrder[type];
   }
 
   ViewDetails(search: SearchResultModel) {

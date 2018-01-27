@@ -10,7 +10,7 @@
 	  <button mat-button (click)="sort('ownerName')">owner</button>
 	</div>
 	<div  fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
-		<app-image fxFlex="20%" *ngFor="let searchResults of results|sort:sortBy" [details]="searchResults" (click)="ViewDetails(searchResults)"></app-image>		 
+		<app-image fxFlex="20%" *ngFor="let searchResults of results|sort:sortBy:sortOrder" [details]="searchResults" (click)="ViewDetails(searchResults)"></app-image>		 
 	</div>
 	
 </div>
