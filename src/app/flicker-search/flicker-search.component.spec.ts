@@ -1,7 +1,7 @@
 import { async, ComponentFixture, tick, TestBed , fakeAsync} from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FlickerSearchComponent } from './flicker-search.component';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
 
 import { HttpModule } from '@angular/http';
@@ -52,5 +52,4 @@ describe('FlickerSearchComponent', () => {
     tick();
     expect(routerSpy).toHaveBeenCalledWith(['/view', 1]);
   }));
-
-})
+});

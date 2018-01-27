@@ -21,34 +21,41 @@ export class FlickerSearchComponent implements OnInit {
   ngOnInit() { }
 
   showErrorIfEmptyResults(photos) {
-   if (typeof photos === 'undefined') {
-        this.error = 'No images found with this search!';
+   if (typeof photos.photo === 'undefined') {
+        this.error = 'No images found!';
         return;
     } else {
       return true;
     }
   }
-  arrangePhotos(image,searchData) {
-    const newSearch =  new SearchResultModel(this.results.length,
-                                             searchData.tags,
-                                             image.url_q,
-                                             image.ownername,
-                                             image.dateupload,
-                                             image.datetaken,
-                                             image.view,
-                                             searchData.userid);
+  arrangePhotos(image) {
+    const datetaken = image.photo.datetaken ? new Date(image.photo.datetaken).getTime() : 0;
+    const newSearch =  new SearchResultModel(image.total,
+                                             image.searchData.tags,
+                                             image.photo.url_q,
+                                             image.photo.ownername,
+                                             image.photo.dateupload,
+                                             datetaken,
+                                             image.photo.view,
+                                             image.searchData.user_id);
     this.results = [...this.results, newSearch];
   }
 
   makeSearch(searchData) {
     this.error = '';
     this.searchSer.search(searchData)
-    .map(res =>  res.photos.photo[0])
+    .map(res =>  {
+      return {
+        photo: res.photos.photo[0],
+        searchData: searchData,
+        total: res.photos.total,
+      };
+    })
     .subscribe(
       (res) => {
         if (this.showErrorIfEmptyResults(res)) {
-          this.arrangePhotos(res,searchData);
-        } 
+          this.arrangePhotos(res);
+        }
       },
       (e) => {
         this.error = 'something went wrong';
@@ -60,8 +67,8 @@ export class FlickerSearchComponent implements OnInit {
   }
 
   ViewDetails(search: SearchResultModel) {
-    if (search.userid !== undefined) {
-      this.router.navigate(['/view', search.tag, search.userid]);
+    if (search.userId !== undefined) {
+      this.router.navigate(['/view', search.tag, search.userId]);
     }else {
       this.router.navigate(['/view', search.tag]);
     }

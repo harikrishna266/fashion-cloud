@@ -4,8 +4,8 @@ export class SearchResultModel {
               public tag,
               public imageUrl,
               public ownerName,
-              public uploaded_date,
-              public photo_date,
+              public uploadedDate,
+              public photoDate,
               public view,
-              public userid?) { }
+              public userId?) { }
 }

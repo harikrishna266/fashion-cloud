@@ -14,7 +14,9 @@ export class SearchComponent implements OnInit {
   constructor(public fb: FormBuilder )  {
     this.flickerSearchForm = this.fb.group({
       tags: ['', Validators.required],
-      user_id: ['']
+      user_id: [''],
+      per_page: [1],
+      page: [1]
     });
   }
 

@@ -23,7 +23,8 @@ export class ImageViewComponent implements OnInit {
     });
   }
   getAllImages(params) {
-    this.searchServ.search(params)
+    this.searchServ
+    .search(params)
     .subscribe(res => {
       for (const imge  of res.photos.photo) {
         const  newSearch =  new FlickerImageModel(params.tags,
