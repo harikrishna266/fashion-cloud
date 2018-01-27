@@ -1,3 +1,7 @@
-<div *ngFor="let image of searchResults">
- <app-image [details]="image"  ></app-image>
+<div  fxLayout="column" fxFlexFill  >	
+	<app-paging fxFlexFill [totalRecords]="totalRecords"  (goToPage)="navigateTo($event)" [currentPage]="currentPage"></app-paging>
+	<div  fxFlex="50" *ngIf="error!=''">  {{error}} </div>
+	<div  fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
+		<app-image fxFlex="20%" *ngFor="let image of searchResults" [details]="image" ></app-image>		 
+	</div>
 </div>

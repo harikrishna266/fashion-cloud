@@ -19,10 +19,29 @@ export class FlickerService {
     }
     return params.toString();
   }
-  search(params) {
+  searchFirstImage(params) {
     const api = this.makeQueryString(params);
     return this.http.get(`${environment.FlickerAPI}&${api}`)
-      .map(res =>  res.json());
+      .map(res => res.json())
+      .map(res => {
+      return {
+        photo: res.photos.photo[0],
+        searchData: params,
+        total: res.photos.total,
+      };
+    });
+  }
+  searchAllImage(params) {
+    const api = this.makeQueryString(params);
+    return this.http.get(`${environment.FlickerAPI}&${api}`)
+      .map(res =>  res.json())
+      .map(res =>  {
+      return {
+        photo: res.photos.photo,
+        searchData: params,
+        total: res.photos.total,
+      };
+    });
   }
 
 }

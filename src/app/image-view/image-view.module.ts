@@ -7,7 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
     {path: ':tags', component: ImageViewComponent},
-    {path: ':tags/:userid', component: ImageViewComponent}
+    {path: ':tags/:page', component: ImageViewComponent}
+    {path: ':tags/:page/:user_id', component: ImageViewComponent}
 ];
 
 @NgModule({

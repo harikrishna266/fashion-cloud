@@ -51,14 +51,7 @@ export class FlickerSearchComponent implements OnInit {
 
   makeSearch(searchData) {
     this.error = '';
-    this.searchSer.search(searchData)
-    .map(res =>  {
-      return {
-        photo: res.photos.photo[0],
-        searchData: searchData,
-        total: res.photos.total,
-      };
-    })
+    this.searchSer.searchFirstImage(searchData)
     .subscribe(
       (res) => {
         if (this.showErrorIfEmptyResults(res)) {
@@ -77,9 +70,9 @@ export class FlickerSearchComponent implements OnInit {
 
   ViewDetails(search: SearchResultModel) {
     if (search.userId !== undefined) {
-      this.router.navigate(['/view', search.tag, search.userId]);
+      this.router.navigate(['/view', search.tag, 1, search.userId]);
     }else {
-      this.router.navigate(['/view', search.tag]);
+      this.router.navigate(['/view', search.tag, 1 , null]);
     }
   }
 }
