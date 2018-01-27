@@ -23,13 +23,12 @@ describe('ImageComponent', () => {
   });
 
   it('should create', () => {
-    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should create', async(() => {
-    component.details = {tag: '1', imageUrl: 'image_url', uploaded_date: '12', photo_date: '12', ownerName: '11'};
-    const de = fixture.debugElement.query(By.css('.image_list'));
+    component.details = {tag: '1', imageUrl: 'imageUrl', uploaded_date: '12', photo_date: '12', ownerName: '11'};
+    const de = fixture.debugElement.query(By.css('.imageList'));
     fixture.detectChanges();
     const ele: HTMLBRElement = de.nativeElement;
     expect(ele.getAttribute('src')).toBe('image_url');

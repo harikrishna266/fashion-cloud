@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PagingComponent } from './paging.component';
+import { MatButtonModule } from '@angular/material/button';
 
 describe('PagingComponent', () => {
   let component: PagingComponent;
@@ -8,7 +9,9 @@ describe('PagingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PagingComponent ]
+      declarations: [ PagingComponent ],
+      imports: [MatButtonModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

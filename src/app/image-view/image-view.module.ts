@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
     {path: ':tags', component: ImageViewComponent},
-    {path: ':tags/:page', component: ImageViewComponent}
+    {path: ':tags/:page', component: ImageViewComponent},
     {path: ':tags/:page/:user_id', component: ImageViewComponent}
 ];
 

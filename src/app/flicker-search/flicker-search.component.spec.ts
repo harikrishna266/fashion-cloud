@@ -39,7 +39,7 @@ describe('FlickerSearchComponent', () => {
 
   it('should call search', () => {
     const flicker = TestBed.get(FlickerService);
-    const loginSpy = spyOn(flicker, 'search').and.callFake(res =>   Observable.empty() );
+    const loginSpy = spyOn(flicker, 'searchFirstImage').and.callFake(res =>   Observable.empty() );
     component.makeSearch({ tags: 'x', userid: 1});
     expect(loginSpy).toHaveBeenCalled();
   });
@@ -50,6 +50,6 @@ describe('FlickerSearchComponent', () => {
     const search = new SearchResultModel(1, 1, 1, 1, 1, 1, 1);
     component.ViewDetails(search);
     tick();
-    expect(routerSpy).toHaveBeenCalledWith(['/view', 1]);
+    expect(routerSpy).toHaveBeenCalledWith(['/view', 1, 1, null]);
   }));
 });

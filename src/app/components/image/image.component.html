@@ -3,7 +3,7 @@
 		<mat-card-title *ngIf="showDetails">{{details?.ownerName}}</mat-card-title>
 		<mat-card-subtitle *ngIf="showDetails">tag:{{details?.tag}}</mat-card-subtitle>
 	</mat-card-header>
-		<img mat-card-image   [src]="details?.imageUrl">
+		<img mat-card-image class="imageList"   [src]="details?.imageUrl">
 	<mat-card-content *ngIf="showDetails">
 		<p  >
 			Uploaded dates:{{details?.uploadedDate | date }}

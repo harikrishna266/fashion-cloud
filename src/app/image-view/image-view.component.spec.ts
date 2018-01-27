@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FlickerService } from '../core/flicker.service';
 import { Observable } from 'rxjs/Observable';
+import { FormsModule } from '@angular/forms';
 
 
 describe('ImageViewComponent', () => {
@@ -15,7 +16,7 @@ describe('ImageViewComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ImageViewComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpModule, RouterTestingModule],
+      imports: [HttpModule, RouterTestingModule, FormsModule],
        providers: [FlickerService]
     })
     .compileComponents();
@@ -32,7 +33,7 @@ describe('ImageViewComponent', () => {
   });
   it('should call search', () => {
     const flicker = TestBed.get(FlickerService);
-    const loginSpy = spyOn(flicker, 'search').and.callFake(res =>  Observable.empty());
+    const loginSpy = spyOn(flicker, 'searchAllImage').and.callFake(res =>  Observable.empty());
     component.getAllImages({tags: 'x', userid: 1});
     expect(loginSpy).toHaveBeenCalled();
   });
